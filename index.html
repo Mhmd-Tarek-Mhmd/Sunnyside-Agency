@@ -14,8 +14,289 @@
     />
 
     <!-- Page Style -->
-    <style></style>
-  </head>
+    <style>
+      /* Global style */
+      :root {
+        --black: hsl(212, 27%, 19%);
+        --yellow: hsl(51, 100%, 49%);
+        --white: hsl(0, 0%, 100%);
 
-  <body></body>
+        --very-dark-gray: hsl(213, 9%, 39%);
+        --dark-gray: hsl(232, 10%, 55%);
+        --gray: hsl(210, 4%, 67%);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font: 600 18px "Barlow", sans-serif;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Grid style */
+      .container {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      @media (min-width: 576px) {
+        .container {
+          max-width: 540px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          max-width: 720px;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .container {
+          max-width: 960px;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 1140px;
+        }
+      }
+
+      /* Utilities */
+      .text-center {
+        text-align: center;
+      }
+
+      .title,
+      .link {
+        font: 900 25px "Fraunces";
+        color: var(--black);
+      }
+      .link {
+        font-weight: 700 !important;
+        border-bottom-style: solid;
+        border-bottom-width: 10px;
+      }
+
+      .justify-between-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .center-x-position {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .hide {
+        display: none !important;
+      }
+      .show {
+        display: block !important;
+      }
+      .d-flex {
+        display: flex !important;
+      }
+      @media (max-width: 767px) {
+        .mobile-hide {
+          display: none !important;
+        }
+        .mobile-show {
+          display: block !important;
+        }
+        .d-mobile-flex {
+          display: flex !important;
+        }
+      }
+
+      /*
+      ** Main style
+      */
+
+      /* Header area */
+      header {
+        background: url(images/image-mobile-header.jpg) no-repeat 70% 70%;
+        background-size: cover !important;
+        position: relative;
+        height: 538px;
+        color: var(--white);
+      }
+      header .header-text {
+        margin-top: 55px;
+      }
+      header h1 {
+        color: inherit !important;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        font-size: 40px !important;
+        margin-bottom: 50px;
+      }
+      @media (min-width: 768px) {
+        header {
+          background: url(images/image-desktop-header.jpg) no-repeat center;
+          height: 800px;
+        }
+        header .header-text {
+          margin-top: 75px;
+        }
+        header h1 {
+          margin-bottom: 100px;
+        }
+      }
+
+      /* Nav area */
+      nav {
+        padding: 30px 0;
+        position: relative;
+      }
+      nav img.clicked {
+        opacity: 0.5;
+      }
+      nav li.active {
+        padding: 20px 30px;
+        border-radius: 30px;
+        color: var(--black);
+        font: 700 16px "Fraunces";
+        text-transform: uppercase;
+      }
+
+      nav .nav-links {
+        flex: 0.5;
+      }
+      @media (max-width: 991px) {
+        nav .nav-links {
+          flex: 0.7;
+        }
+      }
+      nav .nav-links li.active {
+        background-color: var(--white);
+      }
+
+      nav .mobile-nav-links {
+        position: absolute;
+        right: 0;
+        top: 115%;
+        width: 100%;
+        height: 305px;
+        z-index: 1;
+        padding: 40px;
+        color: var(--dark-gray);
+        background-color: white;
+        flex-direction: column;
+      }
+      nav .mobile-nav-links::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: -20px;
+        border-style: solid;
+        border-width: 10px;
+        border-color: transparent var(--white) var(--white) transparent;
+      }
+      nav .mobile-nav-links li.active {
+        background-color: var(--yellow);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header area -->
+    <header>
+      <div class="container">
+        <nav class="justify-between-flex">
+          <a href="#" class="logo">
+            <img src="images/logo.svg" alt="Logo" />
+          </a>
+
+          <img
+            src="images/icon-hamburger.svg"
+            alt="Hamburger icon"
+            style="cursor: pointer"
+            class="hide mobile-show"
+            onclick="navMobileToggle(event)"
+          />
+
+          <ul class="nav-links mobile-hide justify-between-flex text-center">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Projects</a></li>
+            <li class="active"><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-text">
+          <h1 class="title text-center">We are creatives</h1>
+          <a href="#main">
+            <img
+              src="images/icon-arrow-down.svg"
+              alt="Arrow down icon"
+              class="arrow center-x-position"
+            />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Logic -->
+    <script>
+      // Helper Functions
+      function addClass(target, className = "active") {
+        typeof target === "string"
+          ? document
+              .querySelectorAll(target)
+              .forEach((ele) => ele.classList.add(className))
+          : target.classList.toggle(className);
+      }
+      function removeClass(target, className = "active") {
+        typeof target === "string"
+          ? document
+              .querySelectorAll(target)
+              .forEach((ele) => ele.classList.remove(className))
+          : target.classList.toggle(className);
+      }
+      function toggleClass(target, className) {
+        typeof target === "string"
+          ? document
+              .querySelectorAll(target)
+              .forEach((ele) => ele.classList.toggle(className))
+          : target.classList.toggle(className);
+      }
+
+      // Show/Hide nav links on mobile devices
+      function navMobileToggle(e) {
+        const navList = "header nav ul";
+
+        toggleClass(e.target, "clicked");
+        toggleClass(navList, "nav-links");
+        toggleClass(navList, "mobile-hide");
+        toggleClass(navList, "mobile-nav-links");
+      }
+
+      // Toggle active class between nav links
+      document.querySelectorAll("header nav ul a").forEach((ele) =>
+        ele.addEventListener("click", (e) => {
+          e.preventDefault();
+          removeClass("header nav ul li");
+          addClass(e.target.parentElement);
+        })
+      );
+    </script>
+  </body>
 </html>
