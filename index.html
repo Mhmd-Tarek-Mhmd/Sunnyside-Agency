@@ -403,8 +403,8 @@
         padding: 165px 0;
       }
       .testimonials .person:nth-child(2) {
-          margin: 0 45px;
-        }
+        margin: 0 45px;
+      }
       .testimonials h3 {
         letter-spacing: 5px;
         color: var(--gray);
@@ -430,6 +430,22 @@
       .testimonials .info .work {
         color: var(--gray);
         font-size: 13px;
+      }
+
+      /* Gallery section */
+      .gallery {
+        flex-wrap: wrap;
+      }
+      .gallery img {
+        width: 100%;
+      }
+      .gallery picture {
+        width: 50%;
+      }
+      @media (min-width: 768px) {
+        .gallery picture {
+          width: 25%;
+        }
       }
     </style>
   </head>
@@ -622,6 +638,58 @@
           </div>
         </div>
       </section>
+
+      <!-- Gallery section -->
+      <div class="gallery d-flex">
+        <picture>
+          <source
+            media="(min-width: 768px)"
+            srcset="images/desktop-gallery/image-gallery-milkbottles.jpg"
+          />
+          <source
+            srcset="images/mobile-gallery/image-gallery-milkbottles.jpg"
+          />
+          <img
+            src="images/mobile-gallery/image-gallery-milkbottles.jpg"
+            alt="Milk bottles"
+          />
+        </picture>
+
+        <picture>
+          <source
+            media="(min-width: 768px)"
+            srcset="images/desktop-gallery/image-gallery-orange.jpg"
+          />
+          <source srcset="images/mobile-gallery/image-gallery-orange.jpg" />
+          <img
+            src="images/mobile-gallery/image-gallery-orange.jpg"
+            alt="orange"
+          />
+        </picture>
+
+        <picture>
+          <source
+            media="(min-width: 768px)"
+            srcset="images/desktop-gallery/image-gallery-cone.jpg"
+          />
+          <source srcset="images/mobile-gallery/image-gallery-cone.jpg" />
+          <img src="images/mobile-gallery/image-gallery-cone.jpg" alt="cone" />
+        </picture>
+
+        <picture>
+          <source
+            media="(min-width: 768px)"
+            srcset="images/desktop-gallery/image-gallery-sugarcubes.jpg"
+          />
+          <source
+            srcset="images/mobile-gallery/image-gallery-sugar-cubes.jpg"
+          />
+          <img
+            src="images/mobile-gallery/image-gallery-sugar-cubes.jpg"
+            alt="Sugar cubes"
+          />
+        </picture>
+      </div>
     </main>
 
     <!-- Page Logic -->
