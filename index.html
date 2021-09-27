@@ -21,7 +21,6 @@
         --yellow: hsl(51, 100%, 49%);
         --white: hsl(0, 0%, 100%);
 
-        --very-dark-gray: hsl(213, 9%, 39%);
         --dark-gray: hsl(232, 10%, 55%);
         --gray: hsl(210, 4%, 67%);
       }
@@ -59,6 +58,7 @@
         padding-left: 15px;
         padding-right: 15px;
       }
+
       @media (min-width: 576px) {
         .container {
           max-width: 540px;
@@ -87,10 +87,8 @@
       .text-center {
         text-align: center;
       }
-      @media (max-width: 767px) {
-        .text-mobile-center {
-          text-align: center;
-        }
+      .text-uppercase {
+        text-transform: uppercase;
       }
 
       .title {
@@ -125,18 +123,12 @@
       .show {
         display: block !important;
       }
-      .d-flex {
-        display: flex !important;
-      }
       @media (max-width: 767px) {
         .mobile-hide {
           display: none !important;
         }
         .mobile-show {
           display: block !important;
-        }
-        .d-mobile-flex {
-          display: flex !important;
         }
       }
 
@@ -158,7 +150,6 @@
       header h1 {
         color: inherit !important;
         letter-spacing: 8px;
-        text-transform: uppercase;
         font-size: 40px !important;
         margin-bottom: 50px;
       }
@@ -183,24 +174,30 @@
       nav img.clicked {
         opacity: 0.5;
       }
-      nav li.active {
+      nav li.active,
+      nav li:hover {
         padding: 20px 30px;
         border-radius: 30px;
-        color: var(--black);
         font: 700 16px "Fraunces";
         text-transform: uppercase;
       }
 
-      nav .nav-links {
-        flex: 0.5;
+      nav .nav-links li:not(:last-child) {
+        margin-right: 50px;
       }
       @media (max-width: 991px) {
-        nav .nav-links {
-          flex: 0.7;
+        nav .nav-links li:not(:last-child) {
+          margin-right: 30px;
         }
+      }
+
+      nav .nav-links li:hover {
+        background-color: hsl(0, 0%, 100%, 0.2);
+        color: var(--white);
       }
       nav .nav-links li.active {
         background-color: var(--white);
+        color: var(--black);
       }
 
       nav .mobile-nav-links {
@@ -212,7 +209,7 @@
         z-index: 1;
         padding: 40px;
         color: var(--dark-gray);
-        background-color: white;
+        background-color: var(--white);
         flex-direction: column;
       }
       nav .mobile-nav-links::before {
@@ -298,7 +295,6 @@
       .about-us .transform .link,
       .about-us .stand-out .link {
         color: var(--black);
-        text-transform: uppercase;
         font: 900 16px "Fraunces";
         letter-spacing: 2px;
         position: relative;
@@ -382,6 +378,37 @@
       }
 
       /* Testimonials section */
+      .testimonials {
+        padding: 165px 0;
+      }
+      .testimonials .person:nth-child(2) {
+        margin: 0 45px;
+      }
+      .testimonials h3 {
+        letter-spacing: 5px;
+        color: var(--gray);
+        font-size: 16px;
+        margin: 0 0 86px;
+      }
+      .testimonials img {
+        width: 70px;
+        height: 70px;
+        margin: auto;
+        border-radius: 50%;
+      }
+      .testimonials blockquote {
+        color: hsl(213, 9%, 39%);
+        margin: 40px 0;
+        line-height: 1.5;
+      }
+      .testimonials .info .name {
+        font-size: 18px !important;
+        margin: 0;
+      }
+      .testimonials .info .work {
+        color: var(--gray);
+        font-size: 13px;
+      }
       @media (max-width: 767px) {
         .testimonials {
           padding: 68px 0 93px;
@@ -399,41 +426,10 @@
           padding: 0 7px;
         }
       }
-      .testimonials {
-        padding: 165px 0;
-      }
-      .testimonials .person:nth-child(2) {
-        margin: 0 45px;
-      }
-      .testimonials h3 {
-        letter-spacing: 5px;
-        color: var(--gray);
-        text-transform: uppercase;
-        font-size: 16px;
-        margin: 0 0 86px;
-      }
-      .testimonials img {
-        width: 70px;
-        height: 70px;
-        margin: auto;
-        border-radius: 50%;
-      }
-      .testimonials blockquote {
-        color: var(--very-dark-gray);
-        margin: 40px 0;
-        line-height: 1.5;
-      }
-      .testimonials .info .name {
-        font-size: 18px !important;
-        margin: 0;
-      }
-      .testimonials .info .work {
-        color: var(--gray);
-        font-size: 13px;
-      }
 
       /* Gallery section */
       .gallery {
+        display: flex;
         flex-wrap: wrap;
       }
       .gallery img {
@@ -462,8 +458,8 @@
       }
       footer .footer-nav li:hover,
       footer .social svg:hover path {
-        fill: #fff;
-        color: #fff;
+        fill: var(--white);
+        color: var(--white);
       }
       footer .footer-nav li:nth-child(2) {
         margin: 0 60px;
@@ -490,7 +486,7 @@
             onclick="navMobileToggle(event)"
           />
 
-          <ul class="nav-links mobile-hide justify-between-flex text-center">
+          <ul class="nav-links mobile-hide center-flex text-center">
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Projects</a></li>
@@ -499,7 +495,7 @@
         </nav>
 
         <div class="header-text">
-          <h1 class="title text-center">We are creatives</h1>
+          <h1 class="title text-center text-uppercase">We are creatives</h1>
           <a href="#main">
             <img
               src="images/icon-arrow-down.svg"
@@ -536,7 +532,7 @@
                 brands grow fast. Engage your clients through compelling visuals
                 that do most of the marketing for you.
               </p>
-              <a href="#" class="link">Learn more</a>
+              <a href="#" class="link text-uppercase">Learn more</a>
             </div>
           </div>
         </div>
@@ -563,7 +559,7 @@
                 photographers, videographers, and copywriters, we’ll build and
                 extend your brand in digital places.
               </p>
-              <a href="#" class="link">Learn more</a>
+              <a href="#" class="link text-uppercase">Learn more</a>
             </div>
           </div>
         </div>
@@ -621,7 +617,7 @@
       <!-- Testimonials section -->
       <section class="testimonials text-center">
         <div class="container">
-          <h3 class="title">Client testimonials</h3>
+          <h3 class="title text-uppercase">Client testimonials</h3>
 
           <div class="persons center-flex">
             <div class="person">
@@ -664,7 +660,7 @@
       </section>
 
       <!-- Gallery section -->
-      <div class="gallery d-flex">
+      <div class="gallery">
         <picture>
           <source
             media="(min-width: 768px)"
